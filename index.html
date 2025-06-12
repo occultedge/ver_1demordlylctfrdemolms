@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=100%, initial-scale=1.0">
     <title>Watch Video & Chat with Assistant</title>
     <style>
         /* General Body Styling */
@@ -33,6 +33,20 @@
             justify-content: center;
             height: 70vh; /* Adjusted height for more vertical space */
         }
+<div class="video-container">
+    <div id="player2"></div>
+    <div id="videoOverlay2" class="video-overlay"></div> <!-- Overlay for 2nd video -->
+</div>
+
+<div class="video-container">
+    <div id="player3"></div>
+    <div id="videoOverlay3" class="video-overlay"></div> <!-- Overlay for 3rd video -->
+</div>
+
+<div class="video-container">
+    <div id="player4"></div>
+    <div id="videoOverlay4" class="video-overlay"></div> <!-- Overlay for 4th video -->
+</div>
 
         /* Set the dimensions for the player */
         #player {
@@ -294,8 +308,8 @@
     <div id="loginOverlay">
         <div class="login-container">
             <h2>Login</h2>
-            <input type="text" id="username" placeholder="Enter Username" required>
-            <input type="password" id="password" placeholder="Enter Password" required>
+            <input type="text" id="username" placeholder="Enter Username test" required>
+            <input type="password" id="password" placeholder="Enter Password test" required>
             <button onclick="login()">Login</button>
             <p id="error" class="error"></p>
         </div>
@@ -344,18 +358,12 @@
     <!-- Course Content Section -->
     <div class="course-content">
         <!-- Lesson 1: IT Training Course Summary for Nursing Students -->
-        
 
     <!-- Load YouTube IFrame API -->
     <script src="https://www.youtube.com/iframe_api"></script>
 
     <script>
-        const validUsers = [
-    'ab51ne', 'ac19pe', 'ac46me', 'ai55ne', 'an43me', 'as88re', 'at20me', 'aw83ne', 'ay13ne', 'ay56ne', 'az23ne', 'ba75ne', 'ba54me', 'ba57mi', 'ba94ne', 'be00ne', 'be14ne', 'bo19ne', 'ch30ne', 'choone', 'cl63le', 'do00ne', 'ek60me', 'em00ne', 'et00ne', 'eu64ne', 'fe27ne', 'fo59ne', 'fo64ne', 'fo73ne', 'gr01ne', 'jo58ne', 'ke38ne', 'ki72ne', 'ki05mi', 'ki63me', 'ko47ne', 'ku76me', 'kw03ne', 'le36me', 'li94ne', 'lo94me', 'ma03me', 'ma23pe', 'mb17le', 'mb73ne', 'mc63ne', 'me88me', 'me90ne', 'mo37ne', 'mu01ne', 'na00ne', 'nc54me', 'nd26me', 'ne23ne', 'nf71mi', 'ng01ne', 'ng95me', 'tc84me', 'nk98ne', 'no41ne', 'no50ne', 'ns00ne', 'ns05le', 'ns27pe', 'ny59me', 'nyoone', 'on22mi', 'ov55ne', 'pa03me', 'pr20ne', 'ra93de', 'si88me', 'ng37me', 'so28me', 'so88me', 'ta10ne', 'ta02me', 'ta79ne', 'te14ne', 'te23ne', 'te50ne', 'ti10ne', 'ti93ne', 'to36ne', 'to42ne', 'wa00ne', 'aw59mi', 'yo84ne', 'zo34me', 'mb63sf', 'bi70sf', 'nk22sf', 'ng43sf', 'ng67sf', 'nn58sf', 'ke47sf', 'nj35tf', 'si20oe', 'mb13oe', 'rohit', 'utkarsh', 'anita', 'arunima', 'rohit', 'utkarsh', 'bisheline', 'njousi', 'admin', 's1', 's2', 's3', 's4', 's5', 's6', 's7'
-
-
-];
-
+        const validUsers = ['rohit', 'utkarsh', 'test', 'arunima', 'bisheline', 's1', 's2'];
 
         // Function to handle login
         function login() {
@@ -389,7 +397,7 @@
 
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
-                videoId: '1afP6eGflR8', // Replace with your video ID
+                videoId: '2O1nW_KzVEo', // Replace with your video ID
                 playerVars: {
                     'autoplay': 0, 
                     'controls': 0,
@@ -405,6 +413,111 @@
                 }
             });
         }
+// Initialize multiple YouTube players
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        videoId: '2O1nW_KzVEo', // Replace with your video ID
+        playerVars: {
+            'autoplay': 0,
+            'controls': 0,
+            'cc_load_policy': 1, // Turn on captions
+            'modestbranding': 1,
+            'rel': 0,
+            'showinfo': 0,
+            'mute': 1 // Start muted
+        },
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+
+    // Add second player
+    player2 = new YT.Player('player2', {
+        videoId: 'dQw4w9WgXcQ', // Replace with second video ID
+        playerVars: {
+            'autoplay': 0,
+            'controls': 0,
+            'cc_load_policy': 1,
+            'modestbranding': 1,
+            'rel': 0,
+            'showinfo': 0,
+            'mute': 1
+        },
+        events: {
+            'onReady': onPlayerReady2,
+            'onStateChange': onPlayerStateChange2
+        }
+    });
+
+    // Add third player
+    player3 = new YT.Player('player3', {
+        videoId: 'L_jWHffIx5E', // Replace with third video ID
+        playerVars: {
+            'autoplay': 0,
+            'controls': 0,
+            'cc_load_policy': 1,
+            'modestbranding': 1,
+            'rel': 0,
+            'showinfo': 0,
+            'mute': 1
+        },
+        events: {
+            'onReady': onPlayerReady3,
+            'onStateChange': onPlayerStateChange3
+        }
+    });
+
+    // Add fourth player
+    player4 = new YT.Player('player4', {
+        videoId: 'eVTXPUF4Oz4', // Replace with fourth video ID
+        playerVars: {
+            'autoplay': 0,
+            'controls': 0,
+            'cc_load_policy': 1,
+            'modestbranding': 1,
+            'rel': 0,
+            'showinfo': 0,
+            'mute': 1
+        },
+        events: {
+            'onReady': onPlayerReady4,
+            'onStateChange': onPlayerStateChange4
+        }
+    });
+}
+
+// Functions to handle the additional players
+function onPlayerReady2(event) {
+    // Add control functionalities for player2
+}
+
+function onPlayerReady3(event) {
+    // Add control functionalities for player3
+}
+
+function onPlayerReady4(event) {
+    // Add control functionalities for player4
+}
+
+// Add event listener functions for the state changes for each player
+function onPlayerStateChange2(event) {
+    if (event.data === YT.PlayerState.PLAYING) {
+        // Handle playing state for player2
+    }
+}
+
+function onPlayerStateChange3(event) {
+    if (event.data === YT.PlayerState.PLAYING) {
+        // Handle playing state for player3
+    }
+}
+
+function onPlayerStateChange4(event) {
+    if (event.data === YT.PlayerState.PLAYING) {
+        // Handle playing state for player4
+    }
+}
 
         // Function to handle player events when the player is ready
         function onPlayerReady(event) {
@@ -543,7 +656,7 @@ timeSlider.addEventListener('input', function() {
         }
 
         async function getBotResponse(message) {
-            const apiKey = '45759dbbae48d21cb792051045108d7c315a8834fd2b28359fef4dabcbc093ae'; // Together AI API key
+            const apiKey = '231e3610f2cb02bf6942080dbe2832c67d8a600d625aa1cda5ac884a8f5e59ce'; // Together AI API key
             const apiUrl = 'https://api.together.xyz/chat/completions'; 
 
             const prompt = `
@@ -575,7 +688,7 @@ timeSlider.addEventListener('input', function() {
                 if (result.choices && result.choices.length > 0) {
                     return result.choices[0].message.content.trim();
                 } else {
-                    return "Have questions or need help? It’s always best to ask your mentor during the weekly class session. They can guide you with real-world examples and clarify any steps you're unsure about.";
+                    return "Sorry, I couldn't process your request. Please try again.";
                 }
             } catch (error) {
                 console.error('Error:', error);
